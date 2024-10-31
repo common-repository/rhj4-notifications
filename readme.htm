@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0046)https://wordpress.org/plugins/about/validator/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>RHJ4 Notifications Plugin</title>
+<style type="text/css">
+<!--
+body {
+font-family: Lucida Grande, Verdana, sans-serif;
+}
+
+code {
+font-size: 1.3em
+}
+
+div.success {
+background: #0f0;
+width: 50%;
+margin: 0 auto;
+padding: 1px 10px;
+border: 3px solid #0d0;
+}
+
+div.error {
+padding: 1px 10px;
+margin: 30px auto;
+}
+
+div.error p {
+font-weight: bold;
+}
+
+div.error ul {
+list-style: square;
+}
+
+div.fatal {
+background: #faa;
+border: 3px solid #d00;
+}
+
+div.warning {
+background: #f60;
+border: 3px solid #e40;
+}
+
+div.note {
+background: #5cf;
+border: 3px solid #3ad;
+}
+
+-->
+</style></head>
+
+<body>
+	<hr>
+
+	<h1>RHJ4 Notifications</h1>
+
+	<p><em>Generate many different types of popup notifications to users from PHP or jQuery with only a single line of code.</em></p>
+
+	<hr>
+
+	<p>
+	<strong>Contributors:</strong> Bob Jones (rhj4), Stan Lemon (jQrowl)<br>
+	<strong>Donate link:</strong> http://bellinghamwordpressdevelopers.com/donate<br>
+	<strong>Tags:</strong> diagnostics, error-messages, user-interface, popups<br>
+	<strong>Requires at least:</strong> 3.0.1<br>
+	<strong>Tested up to:</strong> 3.9<br>
+	<strong>Stable tag:</strong> 1.7<br>
+	<strong>License:</strong> GPLv2 or later (http://www.gnu.org/licenses/gpl-2.0.html)	</p>
+
+	<hr>
+
+		<h3>Description</h3>
+	<p>RHJ4 Notifications and its sibling, RHJ4 Diagnostics solve problems that have plagued programmers for years: How to communicate with users in a clean, clear and visually consistent fashion regardless of where in the program the message originates.</p>
+
+<p>A notification message can be sent from jQuery code in the browser or from PHP code in the server. Either type of message can be displayed immediately or queued for display after the next page turn.</p>
+
+<p>Notifications appear as popup messages on the bottom right corner of the screen and can stay on the screen until the user clicks on them or they can disappear after five seconds.</p>
+
+<p>Using this plugin, a message can be sent easily from a single line of PHP code:</p>
+
+<pre><code>    rhj4_notification('Warning! Danger, Will Robinson!', NOTIFICATION_TYPE_WARNING);
+</code></pre>
+
+<p>The same messsage can be sent from jQuery code running in the browser:</p>
+
+<pre><code>    jQuery.notification('Warning! Danger, Will Robinson!',
+    jQuery.notification.type('warning'));
+</code></pre>
+
+<p>By default, notifications will disappear from the screen after five seconds; however, to make a notification "sticky", add true as the third argument to either the PHP or jQuery functions:</p>
+
+<pre><code>    jQuery.notification('Warning! Danger, Will Robinson!',
+    jQuery.notification.type('warning'), true);
+</code></pre>
+
+<p>Notifications can be displayed immediately or queued in the wp_notifications table for display later. The wp_notifications table is created when the plugin is enabled. To "enable" this plugin, see Settings and click on the "Enable" checkbox.</p>
+
+<p>RHJ4 Notifications supports 15 types of notifications</p>	<hr>
+		<h3>Installation</h3>
+	<ol>
+<li>Upload <code>RHJ4Notifications.zip</code> file to your <code>/wp-content/plugins/</code> directory</li>
+<li>Activate the plugin through the 'Plugins' menu in WordPress</li>
+<li>In Settings, check "Enable" and save.</li>
+</ol>	<hr>
+		<h3>Frequently Asked Questions</h3>
+	<h4>When do jQuery notifications appear on the screen?</h4>
+
+<p>Immediately unless you have requested that they be "queued".</p>
+
+<h4>When do queued messages get displayed?</h4>
+
+<p>On the next page turn or on a call to rhj4_notifications_list_by_session();</p>
+
+<h4>What can I do with shortcodes?</h4>
+
+<p><em>Lots!</em></p>
+
+<ul>
+<li>Enable specific notification types: only enabled types will be displayed.</li>
+<li>Send a notification message</li>
+<li>Present an interactive demonstration of how to send messages from jQuery or PHP</li>
+</ul>	<hr>
+		<h3>Screenshots</h3>
+	<ol>
+<li>Notifications_Demo.png</li>
+<li>This is the second screen shot</li>
+</ol>	<hr>
+		<h3>Changelog</h3>
+	<h4>1.0</h4>	<hr>
+	
+	<h3>Upgrade Notice</h3>
+	<dl>
+                <dt>1.2</dt>
+                <dd>Overhauled demo.php to use AJAX calls to RHJ4 Diagnostics. It now displays the current Diagnostic log file updates as they happen.</dd>
+                <dt>1.12</dt>
+                <dd>Very small cosmetic fixes.</dd>
+		<dt>1.0</dt>
+		<dd>Initial version</dd>
+	</dl>
+
+	<h3 id="Usage">Usage</h3>
+<p>A notification consists of a:</p>
+
+<ul>
+<li><strong>Message</strong> - some text to be shown to the user.</li>
+<li><strong>Notification Type</strong> - an integer in the range -1..13 that indicates the style of the notification.</li>
+<li><strong>Sticky</strong> - a boolean that indicates whether the message should disappear after a few seconds or "stick" around.</li>
+</ul>
+
+<h3>Notification Types</h3>
+
+<p>These constants are in the global name space:</p>
+
+<ul>
+<li>NOTIFICATION_TYPE_DIAGNOSTIC      = -1;</li>
+<li>NOTIFICATION_TYPE_LOG             = 0;</li>
+<li>NOTIFICATION_TYPE_SYSTEM          = 1;</li>
+<li>NOTIFICATION_TYPE_ERROR           = 2;</li>
+<li>NOTIFICATION_TYPE_WARNING         = 3;</li>
+<li>NOTIFICATION_TYPE_CONFIRMATION    = 4;</li>
+<li>NOTIFICATION_TYPE_MESSAGE         = 5;</li>
+<li>NOTIFICATION_TYPE_TEST            = 6;</li>
+<li>NOTIFICATION_TYPE_DATA            = 7;</li>
+<li>NOTIFICATION_TYPE_COMMENT         = 8;</li>
+<li>NOTIFICATION_TYPE_TIP             = 9;</li>
+<li>NOTIFICATION_TYPE_REMINDER        = 10;</li>
+<li>NOTIFICATION_TYPE_DATE            = 11;</li>
+<li>NOTIFICATION_TYPE_VALIDATION      = 12;</li>
+<li>NOTIFICATION_TYPE_TIMER           = 13;</li>
+</ul>
+
+<p>There are four different interfaces available in the Notifications plugin:</p>
+
+<ul>
+<li>Global Functions</li>
+<li>Class Methods</li>
+<li>jQuery plugin</li>
+<li>Short Codes</li>
+</ul>
+
+<h3>PHP Global Functions</h3>
+
+<h4>Generate a notification</h4>
+
+<pre><code>rhj4_notification($message, $type = NOTIFICATION_TYPE_MESSAGE, $sticky = FALSE);
+</code></pre>
+
+<h3>PHP Class Methods</h3>
+
+<h4>RHJ4Notifications::instance()</h4>
+
+<p>Return an instance of this plugin. This usage allows code in multiple places to use the same instance without having to reinitialize the plugin every time.</p>
+
+<p><em>Example:</em></p>
+
+<pre><code>    $myInstance = RHJ4Notifications::instance()    
+</code></pre>
+
+<h4>init($args)</h4>
+
+<p>Initialize plugin using any of the options defined in $args (see "options" for a list of supported options).</p>
+
+<h4>kill()</h4>
+
+<p>Kill the current instance.</p>
+
+<h4>activate()</h4>
+
+<p>Activate this plugin.</p>
+
+<h4>deactivate()</h4>
+
+<p>Deactivate this plugin.</p>
+
+<h4>options ($options = null)</h4>
+
+<p>Validate options and return valid array. The supported options are:</p>
+
+<p>-<strong>enable</strong>: enable generation of diagnostic messages.</p>
+
+<p>-<strong>log</strong> = {true|false}: enable log notifications</p>
+
+<p>-<strong>system</strong> = {true|false}: enable system notifications</p>
+
+<p>-<strong>error</strong> = {true|false}: enable error notifications</p>
+
+<p>-<strong>warning</strong> = {true|false}: enable warning notifications</p>
+
+<p>-<strong>confirmation</strong> = {true|false}: enable confirmation notifications</p>
+
+<p>-<strong>message</strong> = {true|false}: enable message notifications</p>
+
+<p>-<strong>test</strong> = {true|false}: enable test notifications</p>
+
+<p>-<strong>data</strong> = {true|false}: enable data notifications</p>
+
+<p>-<strong>comment</strong> = {true|false}: enable comment notifications</p>
+
+<p>-<strong>tip</strong> = {true|false}: enable tip notifications</p>
+
+<p>-<strong>reminder</strong> = {true|false}: enable reminder notifications</p>
+
+<p>-<strong>date</strong> = {true|false}: enable date notifications</p>
+
+<p>-<strong>validation</strong> = {true|false}: enable validation notifications</p>
+
+<p>-<strong>timer</strong> = {true|false}: enable timer notifications</p>
+
+<h4>set($options = NULL)</h4>
+
+<p>Establish default options and save them in wp_options. See "options" for a list of supported options.</p>
+
+<h4>reset()</h4>
+
+<p>Reset options to their default values.</p>
+
+<h4>enable()</h4>
+
+<p>Enable this plugin. This function requires admin privileges and should only be called when setting up a site. It creates a database table (first deleting if if it exists) that stores queued notifications.</p>
+
+<p>This function can be accessed from the settings panel or called directly in your code.</p>
+
+<p>All notifications are stored (temporarily) in a common database table that is keyed by Session ID.</p>
+
+<h4>save($message_text, $message_type = 1, $is_sticky = 0)</h4>
+
+<p>Save a message for display on next page turn or explicit call from jQuery.</p>
+
+<pre><code> @param int $message_type
+ @param bool $is_sticky
+ @param string $message_text
+</code></pre>
+
+<h4>delete_user_notifications ($user_id = null)</h4>
+
+<p>Delete all notifications for $user_id.</p>
+
+<h4>delete_session_notifications ()</h4>
+
+<p>Remove all notifications for the current session.</p>
+
+<h4>delete_all_notifications ()</h4>
+
+<p>Clear notifications table of all pending notifications.</p>
+
+<h4>user_queue_size()</h4>
+
+<h4>list_user_notifications($delete = TRUE)</h4>
+
+<p>Return list of all notifications pending for $user_id.</p>
+
+<h4>session_queue_size()</h4>
+
+<h4>list_session_notifications($delete = TRUE)</h4>
+
+<p>Return a list of all pending notifications for the current session.</p>
+
+<h4>list_all_notifications($delete = TRUE)</h4>
+
+<p>Return a list of all notifications.</p>
+
+<h3>jQuery Plugin API</h3>
+
+<p>The jQuery code included in this plugin is implemented as a jQuery plugin with the class name of "jQuery.notification".</p>
+
+<p>The functions supported by this class are:</p>
+
+<h4>notification(message, type, isSticky, pluginurl)</h4>
+
+<p>-<strong>message</strong> (required) may be a string or an object.</p>
+
+<p>If it is a string, the string is the notification text to be displayed.
+If it is an object, the object may contain properties corresponding to any of the options supported by the jQuery.options method.</p>
+
+<p>_<strong>type</strong> (optional) indicates the notification type as either a string or an integer. If missing, type will use the current option.type value.</p>
+
+<p>_<strong>isSticky</strong> (optional) indicates whether the notification is sticky. If missing, isSticky will use the value from msgType.</p>
+
+<p>_<strong>pluginurl</strong> (optional) indicates the url to be called by this function to communicate with the server. If missing, the code will search for a hidden field named #hid_plugin_url.</p>
+
+<p>Examples:</p>
+
+<pre><code>    jQuery.notification('This is a notification',3,true);
+
+    jQuery.notification({ notification: 'This is a notification', 
+            type: "data", 
+            sticky: true, 
+            queue: false });
+</code></pre>
+
+<h4>defaults</h4>
+
+<p>Returns an object containing the default values of all options used by this plugin:</p>
+
+<pre><code>    version: version,   //  code version
+    type: 'log',        //  default message type
+    sticky: true,       //  if true, don't clear the message automatically
+    queue: false,       //  If true, queue the message for later display
+    class: '',          //  jGrowl class that styles this message
+    clear: true,        //  Delete saved messages after showing them
+    showOnConsole: true,//  Show a copy of the message on the console.log
+    glue: 'after',      //  jGrowl property that controls order of displaying messages
+    sleep:,             //  sleep in milliseconds before displaying message 
+    closeTemplate:      //  image to use in close template
+    header:             //  '&lt;span class="icon"&gt;&lt;/span&gt;',
+    notification: ''    //  Message can be included with options
+</code></pre>
+
+<h4>sleep()</h4>
+
+<p>Set notification sleep delay in milliseconds. This value will be remembered by all subsequent calls to $.Notification.</p>
+
+<h4>option (key, value)</h4>
+
+<p>Get/Set single option:</p>
+
+<p>-version: (read only)
+-type: notification type (string or number)
+-sticky: boolean
+-queue: boolean - save messages in database until explicit request to drain queue
+-clear: boolean - clear queue</p>
+
+<h4>save (message, code, sticky, handler)</h4>
+
+<p>-message: the notification text</p>
+
+<p>-code: notification type</p>
+
+<p>-sticky: stick around for awhile or scram</p>
+
+<p>-handler: (optional) custom function to handle displaying the notification.</p>
+
+<h4>messageType (code)</h4>
+
+<p>Returns array of messageType objects.</p>
+
+<h4>type (type)</h4>
+
+<p>Validate notification type value</p>
+
+<h4>getSessionId()</h4>
+
+<p>Get current session id.</p>
+
+<h4>getPluginURL()</h4>
+
+<p>Return URL of AJAX handler function.</p>
+
+<h4>queue (handler)</h4>
+
+<p>Return count of notifications awaiting delivery.</p>
+
+<h4>show (clear)</h4>
+
+<p>Show all messages in the queue. If clear===true, delete all messages just just retrieved.</p>
+
+<h4>erase()</h4>
+
+<p>Close any open notification messages on screen.</p>
+
+<h4>clear()</h4>
+
+<p>Delete all messages to the current session.</p>
+
+<h4>showUser (userId)</h4>
+
+<p>Notifications can be sent to a specific userId. The messages will be held until that user logs in.</p>
+
+<h4>clearUser (userId)</h4>
+
+<p>Delete all user notifications from database.</p>
+
+<h3>Short Codes</h3>
+
+<ul>
+<li><p><em>enable=1,3,6</em> will enable notification types 1,3 and 6.</p></li>
+<li><p><em>notify</em> message= type= sticky={true|false}</p></li>
+<li><p><em>verbose</em> will cause actions to be echoed on the page.</p></li>
+<li><p><em>demo</em> will display a demonstration of using the Notifications plugin.</p></li>
+</ul>
+
+<h3>SUPPORT</h3>
+
+<p>I will attempt to answer your email as quickly as I can, but cannot promise immediate response.</p>
+
+<p>I will entertain ideas for enhancements, especially if I hear the same request from multiple people.</p>
+
+<p>Donations will encourage my support... and my thanks.</p>
+
+<h3>CONSULTING</h3>
+
+<p>I make my living by helping WordPress developers. If I can help you, please contact me.</p>
+
+<p>Bob Jones</p>
+
+<p><a href="mailto:bob@rhj4.com">bob@rhj4.com</a></p>
+
+<p><a href="http://bellinghamwordpressdevelopers.com/">bellinghamwordpressdevelopers.com/</a></p>
+<hr>
+</body></html>

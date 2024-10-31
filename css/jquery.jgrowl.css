@@ -1,0 +1,400 @@
+
+div.jGrowl {
+	z-index: 9999;
+	color: #fff;
+	font-size: 12px;
+}
+
+/** Special IE6 Style Positioning **/
+div.ie6 {
+	position: absolute;
+}
+
+div.ie6.top-right {
+	right: auto;
+	bottom: auto;
+	left: expression( ( 0 - jGrowl.offsetWidth + ( document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth ) + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+	top: expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+
+div.ie6.top-left {
+	left: expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+	top: expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+
+div.ie6.bottom-right {
+	left: expression( ( 0 - jGrowl.offsetWidth + ( document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth ) + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+	top: expression( ( 0 - jGrowl.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+
+div.ie6.bottom-left {
+	left: expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+	top: expression( ( 0 - jGrowl.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+
+div.ie6.center {
+	left: expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+	top: expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+	width: 100%;
+}
+
+/** Normal Style Positions **/
+div.jGrowl {
+	position: absolute;
+}
+
+body > div.jGrowl {
+	position: fixed;
+}
+
+div.jGrowl.top-left {
+	left: 0px;
+	top: 0px;
+}
+
+div.jGrowl.top-right {
+	right: 0px;
+	top: 0px;
+}
+
+div.jGrowl.bottom-left {
+	left: 0px;
+	bottom: 0px;
+}
+
+div.jGrowl.bottom-right {
+	right: 0px;
+	bottom: 0px;
+}
+
+div.jGrowl.center {
+	top: 0px;
+	width: 50%;
+	left: 25%;
+}
+
+/** Cross Browser Styling **/
+div.center div.jGrowl-notification, 
+div.center div.jGrowl-closer {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.jGrowl div.jGrowl-notification, 
+div.jGrowl div.jGrowl-closer {
+	display: none;
+	color: #000;
+	border: 1px solid #666;
+	width: 400px;
+	padding: 0;
+	margin: 5px 0 5px 0;
+	font-family: inherit;
+	font-size: 11px;
+	line-height: normal;
+	text-align: left;
+	/* BACHGROUND IMAGE */
+		background-image: url(../images/grey-gradient.jpg);
+		background-repeat: repeat-x;
+		background-color: #FFF;
+		background-position: bottom left;
+	/* OPACITY */
+		/*
+		filter:alpha(opacity=.90);
+		-moz-opacity:.90;
+		-khtml-opacity: 0.90;
+		opacity:.90;
+		-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)"; 
+		filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+		*/ 
+	/* SHADOW */
+		box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+		-moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+		-webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+		-o-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+	/* RADIUS */
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		-khtml-border-radius:5px;
+		behavior: url(../../../../../../../css/PIE/PIE.htc);/* path to PIE.htc (http://css3pie.com/) */
+		position:relative;/* prevents PIE problems with z-index */
+	zoom: 1;
+}
+
+
+div.jGrowl div.jGrowl-notification {
+	/* min-height: 40px; */
+}
+
+div.jGrowl div.jGrowl-notification,
+div.jGrowl div.jGrowl-closer {
+	margin: 16px;
+}
+
+/* HEADER */
+	div.jGrowl div.jGrowl-header {
+		background: #ddd;
+		font-weight: bold;
+		line-height: normal;
+		padding: .15em 10px .25em 10px;
+		/* TOP LEFT */ 
+			border-top-left-radius: 5px;
+			-moz-border-radius-topleft: 5px;
+			-webkit-border-top-left-radius: 5px;
+			-khtml-border-radius-topleft:5px;
+		/* TOP RIGHT */ 
+			border-top-right-radius: 5px;
+			-moz-border-radius-topright: 5px;
+			-webkit-border-top-right-radius: 5px;
+			-khtml-border-radius-topright:5px;
+	}
+
+/* MESSAGE */
+	div.jGrowl div.jGrowl-message {
+		padding: 10px;
+		background: transparent;
+	}
+	
+	div.jGrowl-notification.noHeader  div.jGrowl-message{
+		margin-left: 20px;
+	}
+	
+/* CLOSE */
+	div.jGrowl div.jGrowl-close {
+		z-index: 9999;
+		float: right;
+		font-weight: bold;
+		font-size: 1em;
+		cursor: pointer;
+	}
+	
+/* CLOSER */
+	div.jGrowl div.jGrowl-closer {
+		background: #ddd;
+		color: #666;
+		padding-top: 4px;
+		padding-bottom: 4px;
+		cursor: pointer;
+		font-size: .9em;
+		font-weight: bold;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+/* PRINT MEDIA */
+	@media print {
+		div.jGrowl {
+			display: none;
+		}
+	}
+	
+/* NOTIFICATION TYPES */
+
+	/* INFO */
+		#notification-main{
+			position: relative;
+		}
+		
+		div.jGrowl-notification.information span.icon{
+			display: block;
+			width: 32px;
+			height: 32px;
+			position: absolute;
+			top:-8px;
+			left:-8px;
+			background-image: url(../images/Information-32x32.png);
+			background-repeat: no-repeat;
+			background-position: center left;	
+		}
+		div.jGrowl-notification.information div.jGrowl-header{
+			padding-left: 30px;
+		}
+
+	/* COMMENT */
+		div.jGrowl-notification.comment span.icon{
+			display: block;
+			width: 32px;
+			height: 32px;
+			position: absolute;
+			top:-8px;
+			left:-8px;
+			background-image: url(../images/Comment-32x32.png);
+			background-repeat: no-repeat;
+			background-position: center left;	
+		}
+		
+		div.jGrowl-notification.comment div.jGrowl-header{
+			padding-left: 30px;
+		}
+
+	/* REMINDER */
+		div.jGrowl-notification.reminder span.icon{
+			display: block;
+			width: 32px;
+			height: 32px;
+			position: absolute;
+			top:-8px;
+			left:-8px;
+			background-image: url(../images/Reminder-32x32.png);
+			background-repeat: no-repeat;
+			background-position: center left;	
+		}
+		
+		div.jGrowl-notification.reminder div.jGrowl-header{
+			padding-left: 30px;
+		}
+		
+		/* Date/Time */
+			div.jGrowl-notification.reminder.datetime span.icon{
+				background-image: url(../images/Reminder-DateTime-32x32.png);
+			}
+		
+	/* TIMER */
+		div.jGrowl-notification.timer span.icon{
+			display: block;
+			width: 32px;
+			height: 32px;
+			position: absolute;
+			top:-8px;
+			left:-8px;
+			background-image: url(../images/Timer-32x32.png);
+			background-repeat: no-repeat;
+			background-position: center left;	
+		}
+		
+		div.jGrowl-notification.timer div.jGrowl-header{
+			padding-left: 30px;
+		}
+		
+		
+	/* CONFIRM */
+		div.jGrowl-notification.confirmation span.icon{
+			display: block;
+			width: 32px;
+			height: 32px;
+			position: absolute;
+			top:-8px;
+			left:-8px;
+			background-image: url(../images/Confirm-32x32.png);
+			background-repeat: no-repeat;
+			background-position: center left;	
+		}
+		
+		div.jGrowl-notification.confirmation div.jGrowl-header{
+			padding-left: 27px;
+		}
+
+	/* WARN */
+		div.jGrowl-notification.warning span.icon{
+			display: block;
+			width: 32px;
+			height: 32px;
+			position: absolute;
+			top:-10px;
+			left:-10px;
+			background-image: url(../images/Warn-32x32.png);
+			background-repeat: no-repeat;
+			background-position: center left;	
+		}
+		
+		div.jGrowl-notification.warning div.jGrowl-header{
+			padding-left: 27px;
+			background: #da840c;
+			color: #FFF;
+		}
+		
+	/* DATA */
+		div.jGrowl-notification.data span.icon{
+			display: block;
+			width: 32px;
+			height: 32px;
+			position: absolute;
+			top:-10px;
+			left:-10px;
+			background-image: url(../images/Database-32x32.png);
+			background-repeat: no-repeat;
+			background-position: center left;	
+		}
+		
+		div.jGrowl-notification.data div.jGrowl-header{
+			padding-left: 27px;
+			background: #215CD0;
+			color: #FFF;
+		}
+		
+	/* ERROR */
+		div.jGrowl-notification.error span.icon{
+			display: block;
+			width: 32px;
+			height: 32px;
+			position: absolute;
+			top:-10px;
+			left:-10px;
+			background-image: url(../images/Error-32x32.png);
+			background-repeat: no-repeat;
+			background-position: center left;	
+		}
+		
+		div.jGrowl-notification.error div.jGrowl-header{
+			padding-left: 27px;
+			background: red;
+			color: #FFF;
+		}
+	
+	/* TIP */
+		div.jGrowl-notification.tip span.icon{
+			display: block;
+			width: 32px;
+			height: 32px;
+			position: absolute;
+			top:-10px;
+			left:-13px;
+			background-image: url(../images/Tip-32x32.png);
+			background-repeat: no-repeat;
+			background-position: center left;	
+		}
+		
+		div.jGrowl-notification.tip div.jGrowl-header{
+			padding-left: 20px;
+		}
+		
+		
+/* HEADER NOTIFICATIONS */
+	div.jGrowl.header{
+		position: relative;
+		z-index: 1;
+	}
+	
+	div.jGrowl.header div.jGrowl-notification{
+		width: auto;
+		margin: 20px 0 20px 10px;
+		font-family: Tahoma, Arial, Helvetica, sans-serif;
+		font-size: inherit;
+		line-height: normal;
+		text-align: left;
+		background: #FFF;
+		/* SHADOW */
+			box-shadow: none;
+			-moz-box-shadow: none;
+			-webkit-box-shadow: none;
+			-o-box-shadow: none;
+		/* RADIUS */
+			border-radius: 5px;
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			-khtml-border-radius:5px;
+			behavior: url(../../../../../../../css/PIE/PIE.htc);/* path to PIE.htc (http://css3pie.com/) */
+			position:relative;/* prevents PIE problems with z-index */
+	}
+	
+	div.jGrowl.header div.jGrowl-header {
+	}
+	
+	div.jGrowl.header div.jGrowl-close{
+		display: none;
+	}
+
+	div.jGrowl.header div.jGrowl-closer {
+		position:absolute;
+		left:-9999px;
+	}		

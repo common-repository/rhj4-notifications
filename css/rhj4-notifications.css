@@ -1,0 +1,90 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 15, 2014, 11:31:56 AM
+    Author     : Bob Jones
+*/
+.rhj4_plugins_demo {
+   background-color: lightgray;
+   border: 1px solid black;
+   width: 400px;
+   padding-top: 8px;
+   padding-bottom: 8px;
+   padding-left: 8px;
+   padding-right: 8px;
+}
+
+.rhj4_plugins_demo input[type='text'] {
+    border: 1px solid black;
+    padding: 4px;
+    margin: 3px;
+    width: 200px;
+}
+
+.rhj4_plugins_demo input[type='radio'] {
+    margin-left: 8px;
+    margin-right: 10px;
+}
+
+.rhj4_plugins_demo input[type='checkbox'] {
+    margin-left: 8px;
+    margin-right: 10px;
+    vertical-align: top;
+}
+
+.rhj4_plugins_demo select{
+    border: 1px solid black;
+    padding: 4px;
+    margin: 3px
+}
+
+.rhj4_plugins_label {
+    font-weight: bold;
+}
+
+.rhj4_plugins_demo td {
+    vertical-align: top;
+    color:black;
+}
+
+.rhj4_radio, .rhj4_checkbox {
+    height:18px;
+    width: 18px;
+}
+
+.rhj4_plugins_shortcode td {
+    vertical-align: top;
+}
+
+.rhj4_plugins_comment {
+    color: orange;
+}
+
+.rhj4_plugins_buttons {
+   background-color: silver;
+   border: 1px solid black;
+   margin-top: 15px;
+}
+
+.rhj4_plugin_log {
+    vertical-align: top;
+}
+
+.rhj4_plugin_buttons {
+    margin-top: 15px;
+}
+
+.rhj4_plugins_buttons span.blink {
+    text-decoration: blink;
+    background-color: white;
+    color:red;
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.form-table th {
+  width: 325px;
+}
